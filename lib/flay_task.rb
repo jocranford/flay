@@ -45,6 +45,7 @@ class FlayTask < Rake::TaskLib
       require "flay"
       flay = Flay.new
       flay.process(*Flay.expand_dirs_to_files(dirs))
+      flay.analyze
       flay.report if verbose
 
       raise "Flay total too high! #{flay.total} > #{threshold}" if
